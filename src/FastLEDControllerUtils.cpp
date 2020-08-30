@@ -131,9 +131,9 @@ void CorsairLightingProtocol::fixIcueBrightness(FastLEDController* controller, u
 		auto leds = controller->getLEDs(channelIndex);
 		auto count = controller->getLEDCount(channelIndex);
 		for (int ledIndex = 0; ledIndex < count; ledIndex++) {
-			leds[ledIndex].r = leds[ledIndex].r * 2;
-			leds[ledIndex].g = leds[ledIndex].g * 2;
-			leds[ledIndex].b = leds[ledIndex].b * 2;
+			leds[ledIndex].r = pow((leds[ledIndex].r * 0.1), 2.1786) ; // Not tested yet, I hope to work, increase brightness exponentially for better bright curve
+			leds[ledIndex].g = pow((leds[ledIndex].g * 0.1), 2.1786);
+			leds[ledIndex].b = pow((leds[ledIndex].b * 0.1), 2.1786) ;
 		}
 	}
 }
